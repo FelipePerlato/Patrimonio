@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Patrimonio.Models.DtoDepartamento>
+
+@{
+    
+    Layout = "_LayoutDepartamento";
+    ViewData["Departamentos"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomedepartamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descricaodepartamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomelocal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomedepartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricaodepartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomelocal)
+            </td>
+            <td>
+                
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

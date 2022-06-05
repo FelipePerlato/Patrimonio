@@ -1,0 +1,45 @@
+﻿@model Patrimonio.Models.DbDepartamento
+
+@{
+     Layout = "_LayoutDepartamento";
+    ViewData["Departamentos"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DbDepartamento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nomedepartamento" class="control-label"></label>
+                <input asp-for="nomedepartamento" class="form-control" />
+                <span asp-validation-for="nomedepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descricaodepartamento" class="control-label"></label>
+                <input asp-for="descricaodepartamento" class="form-control" />
+                <span asp-validation-for="descricaodepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+               @*HtmlHelpers*@
+                @*<text>Local</text> @Html.DropDownList("local", new SelectList(ViewBag.local))*@
+                @*Razor*@
+                <select asp-items=@ViewBag.local2 asp-for="idlocal" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
